@@ -1,0 +1,145 @@
+unittest1.c:
+isGameOver(): PASS when stack of Province cards is not empty
+isGameOver(): PASS when stack of Province cards is empty
+isGameOver(): FAIL when stack of Provice cards is negative
+
+isGameOver(): PASS when 1 stack of kingdom cards is empty
+isGameOver(): PASS when 2 stacks of kingdom cards are empty
+isGameOver(): PASS when 3 stacks of kingdom cards are empty
+
+isGameOver(): PASS when 1 stack of Non-Play cards at edge is empty
+isGameOver(): PASS when 2 stacks of Non-Play cards at edge are empty
+isGameOver(): FAIL when 3 stacks of Non-Play cards at edge are empty
+
+File 'dominion.c'
+Lines executed:1.79% of 670
+dominion.c:creating 'dominion.c.gcov'
+
+unittest2.c:
+shuffle(): PASS when deck count is 10
+
+shuffle(): PASS checking that altered deckcount is 10
+
+shuffle(): PASS checking that shuffled card values are in range
+
+shuffle(): PASS when deck count is 0
+
+shuffle(): PASS when deck count is negative
+
+File 'dominion.c'
+Lines executed:5.22% of 670
+dominion.c:creating 'dominion.c.gcov'
+
+unittest3.c:
+scoreFor(): PASS when all counts are 0
+scoreFor(): PASS when 3 cards per score category for all decks
+scoreFor(): FAIL when 3 cards per score category for all decks but deckCount = 0
+scoreFor(): PASS when 3 cards per score category for all decks but handCount = 0 
+scoreFor(): FAIL when 3 cards per score category for all decks but discardCount = 0 
+File 'dominion.c'
+Lines executed:9.10% of 670
+dominion.c:creating 'dominion.c.gcov'
+
+unittest4.c:
+getCost(): PASS when passed curse
+getCost(): PASS when passed estate
+getCost(): PASS when passed duchy
+getCost(): PASS when passed province
+getCost(): PASS when passed copper
+getCost(): PASS when passed silver
+getCost(): PASS when passed gold
+getCost(): PASS when passed adventurer
+getCost(): PASS when passed council_room
+getCost(): PASS when passed feast
+getCost(): PASS when passed gardens
+getCost(): PASS when passed mine
+getCost(): PASS when passed remodel
+getCost(): PASS when passed smithy
+getCost(): PASS when passed village
+getCost(): PASS when passed baron
+getCost(): PASS when passed great_hall
+getCost(): PASS when passed minion
+getCost(): PASS when passed steward
+getCost(): PASS when passed tribute
+getCost(): PASS when passed ambassador
+getCost(): PASS when passed cutpurse
+getCost(): PASS when passed embargo
+getCost(): PASS when passed outpost
+getCost(): PASS when passed salvager
+getCost(): PASS when passed sea_hag
+getCost(): PASS when passed treasure_map
+getCost(): PASS when passed out of index vaue
+File 'dominion.c'
+Lines executed:13.58% of 670
+dominion.c:creating 'dominion.c.gcov'
+
+cardtest1.c:
+smithyEffect(): PASS case 1: general call with correct parameters
+smithyEffect(): FAIL case 1 + handcount check increase by 2
+smithyEffect(): PASS case 1 + smithy discarded
+smithyEffect(): FAIL case 1 + deckcount decreased by 3
+smithyEffect(): FAIL case 2: detect call with incorrect parameter (handpos)
+smithyEffect(): FAIL case 2 + handcount check increase by 2
+smithyEffect(): FAIL case 2 + smithy discarded
+smithyEffect(): FAIL case 2 + deckcount decreased by 3
+File 'dominion.c'
+Lines executed:19.40% of 670
+dominion.c:creating 'dominion.c.gcov'
+
+cardtest2.c:
+adventurerEffect(): PASS general test with empty deck
+adventurerEffect(): PASS hand count is increased by 2
+adventurerEffect(): PASS treasurey card increased by 2
+adventurerEffect(): PASS deck was successfully transfered from discard
+
+adventurerEffect(): PASS general test with non empty deck
+adventurerEffect(): PASS hand count is increased by 2
+adventurerEffect(): PASS treasurey card increased by 2
+
+adventurerEffect(): PASS general test - deck (no treasure cards) discard (has treasure cards)
+adventurerEffect(): PASS hand count is increased by 2
+adventurerEffect(): PASS treasurey card increased by 2
+
+adventurerEffect(): PASS general test - deck (no treasure cards) discard (no treasure cards)
+adventurerEffect(): FAIL hand count is increased by 2
+adventurerEffect(): FAIL treasurey card increased by 2
+
+File 'dominion.c'
+Lines executed:25.37% of 670
+dominion.c:creating 'dominion.c.gcov'
+
+cardtest3.c:
+villageEffect(): PASS general test village in hand with empty deck
+villageEffect(): PASS hand increased by 0
+villageEffect(): FAIL actions increased by 2
+villageEffect(): PASS village properly discarded
+
+villageEffect(): FAIL general test village not in hand 
+villageEffect(): PASS hand increased by 0
+villageEffect(): FAIL actions increased by 2
+villageEffect(): PASS village properly discarded
+
+File 'dominion.c'
+Lines executed:26.87% of 670
+dominion.c:creating 'dominion.c.gcov'
+
+cardtest4.c:
+remodelEffect(): PASS general test trading 3 cost for 5 cost
+remodelEffect(): FAIL traded card discarded
+remodelEffect(): FAIL traded up card in deck
+remodelEffect(): PASS remodel discarded
+
+remodelEffect(): PASS general test trading 5 cost for 3 cost
+remodelEffect(): FAIL traded card discarded
+remodelEffect(): FAIL traded up card in deck
+remodelEffect(): PASS remodel discarded
+
+remodelEffect(): PASS general test trading 3 cost for 6 cost
+remodelEffect(): FAIL traded card discarded
+remodelEffect(): FAIL traded up card in deck
+remodelEffect(): PASS remodel discarded
+
+File 'dominion.c'
+Lines executed:29.70% of 670
+dominion.c:creating 'dominion.c.gcov'
+
