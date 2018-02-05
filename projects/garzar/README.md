@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-Romano Garza garzar
-=======
-This is my assignment-1 submission!
->>>>>>> origin/garzar-assignment-1
+
+Assignments for CS 362 Software Engineering II
+
