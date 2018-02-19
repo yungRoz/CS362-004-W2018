@@ -79,6 +79,20 @@ int inDeck(int player, struct gameState state, int card)
     return 0;
 }
 
+int inHandCount(int player, struct gameState state, int card)
+{
+    int j;
+    int count=0;
+    // get cards in players hand
+    for(j = 0; j < state.handCount[player]; j++){
+        if(state.hand[player][j] == card){
+            count++;
+        }
+    }
+    return count;
+}
+
+
 int getTreasureyCardCount(int player, struct gameState state)
 {
     int count = 0;

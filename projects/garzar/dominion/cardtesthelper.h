@@ -12,7 +12,7 @@
 #include "rngs.h"
 
 int inDeck(int player, struct gameState state, int card); // used in smithy test
-
+int inHandCount(int player, struct gameState state, int card);
 int getTreasureyCardCount(int player, struct gameState state); // used in adventurer test
 void emptyDeck(int player, struct gameState *state); // used in adventurer test
 void advC3(int player, struct gameState *state); // used to alter state adventurer for case 3
