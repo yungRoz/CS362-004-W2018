@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <assert.h>
 #include "rngs.h"
-
+#include <math.h>
 struct countFails
 {
     int handCountFail; // number of times handCount has not properly increased
@@ -67,7 +67,7 @@ void checkSmithy(int p, struct gameState* G)
     while(i < 3)
     {
         // draw a card
-        d = drawCard(p, &pG)
+        d = drawCard(p, &pG); 
         // increment return failure if value does not indicate fail
         ftracker.drawCardFail += (d== -1 && pG.deckCount[p]!=0);
     }

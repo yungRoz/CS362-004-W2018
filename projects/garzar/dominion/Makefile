@@ -60,7 +60,7 @@ runtests: testDrawCard
 	cat dominion.c.gcov >> unittestresult.out
 
 unittestresults.out: unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 
-	echo "unittest1.c:" >> unittestresults.out
+echo "unittest1.c:" >> unittestresults.out
 	./unittest1 >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
 	echo "unittest2.c:" >> unittestresults.out
@@ -101,8 +101,8 @@ randomtestadventurer.out : randomtestadventurer
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
 
-all: playdom player testDrawCard testBuyCard badTestDrawCard unittestresults.out randomtestcard1.out randomtestcard2.out randomtestadventurer.c
+all: playdom player testDrawCard testBuyCard badTestDrawCard unittestresults.out randomtestcard1.out randomtestcard2.out randomtestadventurer.out
 
-
+randtest: randomtestcard1.out randomtestcard2.out randomtestadventurer.out
 clean:
-	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out *.dSYM testDrawCard badTestDrawCard testDrawCard.exe unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 unittestresults.out
+	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out *.dSYM testDrawCard badTestDrawCard testDrawCard.exe unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 unittestresults.out randomtestcard1.out randomtestcard2.out randomtestadventurer.out
