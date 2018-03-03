@@ -25,7 +25,7 @@ int main () {
     prevDeckCount = G.deckCount[player1];
     //printf("handCount: %d\n", prevHandCount);
     //printf("deckCount: %d\n", G.deckCount[player1]);
-    
+
     if(!cardEffect(13, -1, -1, -1, &G, 5, 0)){
         printf("smithyEffect(): PASS case 1: general call with correct parameters\n");
     }
@@ -33,7 +33,7 @@ int main () {
     {
         printf("smithyEffect(): FAIL case 1: general call with correct parameters\n");
     }
-    
+
     // hand count should increase by 2 (+3 - 1)
     //printf("handCount: %d\n", G.handCount[player1]);
     //printf("deckCount: %d\n", G.deckCount[player1]);
@@ -45,7 +45,7 @@ int main () {
     {
         printf("smithyEffect(): FAIL case 1 + handcount check increase by 2\n");
     }
-    
+
     // hand should not contain smithy
     if(inDeck(player1, G, 13)){
         printf("smithyEffect(): FAIL case 1 + smithy discarded\n");
@@ -54,7 +54,7 @@ int main () {
     {
         printf("smithyEffect(): PASS case 1 + smithy discarded\n");
     }
-    
+
     // deck count should decrease by 3
     // hand should not contain smithy
     if(G.deckCount[player1] == prevDeckCount - 3){
@@ -64,8 +64,8 @@ int main () {
     {
         printf("smithyEffect(): FAIL case 1 + deckcount decreased by 3\n");
     }
-    
-    
+
+
     // reinit gameState for second use case
     G = myInitGame();
     // add smithy to index 5
@@ -81,11 +81,11 @@ int main () {
     {
         printf("smithyEffect(): PASS case 2: call with incorrect parameter (handPos)\n");
     }
-    
+
     // hand count should increase by 2 (+3 - 1)
     //printf("handCount: %d\n", G.handCount[player1]);
     //printf("deckCount: %d\n", G.deckCount[player1]);
-    
+
     if(G.handCount[player1] == prevHandCount + 2)
     {
         printf("smithyEffect(): PASS case 2 + handcount check increase by 2\n");
@@ -94,7 +94,7 @@ int main () {
     {
         printf("smithyEffect(): FAIL case 2 + handcount check increase by 2\n");
     }
-    
+
     // hand should not contain smithy
     if(inDeck(player1, G, 13)){
         printf("smithyEffect(): FAIL case 2 + smithy discarded\n");
@@ -103,7 +103,7 @@ int main () {
     {
         printf("smithyEffect(): PASS case 2 + smithy discarded\n");
     }
-    
+
     // deck count should decrease by 3
     // hand should not contain smithy
     if(G.deckCount[player1] == prevDeckCount - 3){
@@ -113,5 +113,5 @@ int main () {
     {
         printf("smithyEffect(): FAIL case 2 + deckcount decreased by 3\n");
     }
-    
+
 }

@@ -10,6 +10,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <assert.h>
+#include <math.h>
 #include "rngs.h"
 
 struct countFails
@@ -69,58 +70,13 @@ void randomlyInitDeckDiscard(int player, struct gameState* G, struct gameState* 
 
 void checkAdv(int p, struct gameState* G, struct gameState pG)
 {
+    int returnVal, oldTCC, newTCC;
 
-    int handCount, returnVal, oldTCC, newTCC;
-    int drawntreasure=0;
-    int z = 0;
-    int tempHand[MAX_HAND];
-    int cardDrawn;
-
-    // check if player state has no cards in deck or discard
-    int bothEmpty = (pG.deckCount[p]==0 && pG.discardCount[p]==0);
-
-    // save initial handcount
-    handCount = pG.handCount[p];
-    // save initial treasure card count
-    oldTCC = getTreasureyCardCount(p, pG);
-
-    // until 2 treasure cards have been drawn
-    // keep drawing
-    while(drawntreasure<2)
-    {
-        if(pG.deckCount[p] < 1){
-            returnVal = shuffle(p, &pG);
-            //increment shuffle fail if shuffle errors but
-            //non empty deck and discard pile
-            ftracker.shuffleFail += (returnVal == -1 && !bothEmpty);
-            //printf("Shuffle fail: %d", returnVal);
-        }
-
-        // draw a card and increment
-        // drawCard fail if error but non empty
-        // deck and discard pile
-        returnVal = drawCard(p, &pG);
-        ftracker.drawCardFail += (returnVal == -1 && !bothEmpty);
-        //printf("Return val: %d \nBothEmp: %d \n", returnVal, bothEmpty);
-        //draw card and add to hand if treasure
-        //printf(" index error? : %d ", pG.handCount[p] - 1);
-        cardDrawn = pG.hand[p][pG.handCount[p]-1];
-        if(cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
-        {
-            drawntreasure++;
-        }
-        else
-        {// remove from hand because the card wasn't treasure
-            tempHand[z++] = cardDrawn;
-            pG.handCount[p]--;
-        }
-    }
-
-
-
-    // check return value from actual card effect
+    oldTCC = getTreasureyCardCount(p, pG.handCount[p], pG);
+    G->hand[p][0] = 7;
+    printf("Starting call to cardEffect!\n", oldTCC);
     returnVal = cardEffect(7, -1, -1, -1, G, -1, 0);
-
+    printf("Finished \n");
     // if error, increment return fail
     if(returnVal == -1)
     {
@@ -128,18 +84,18 @@ void checkAdv(int p, struct gameState* G, struct gameState pG)
     }
 
     // check no differences in final handCount values
-    if(G->handCount[p] != pG.handCount[p])
+    if(G->handCount[p] != pG.handCount[p] + 2)
     {
         ftracker.handCountFail++;
     }
 
     // check that treasure was properly drawn
-    newTCC = getTreasureyCardCount(p, *G);
+    newTCC = getTreasureyCardCount(p, G->handCount[p], *G);
     if(oldTCC + 2 != newTCC)
     {
         ftracker.drawTreasuresFail++;
     }
-
+    printf("end\n\n");
 
 }
 
@@ -149,7 +105,9 @@ int main()
     SelectStream(2);
     PutSeed(3);
 
-    int n, i, p;
+    int n, i, p, randomCard, deckCount, discCount;
+    int addedToDeck = 0;
+    int addedToDisc = 0;
     struct gameState G;
     struct gameState pG;
     ftracker.returnFail = 0;
@@ -158,7 +116,7 @@ int main()
     ftracker.drawCardFail = 0;
     ftracker.shuffleFail = 0;
 
-    for (n = 0; n < 2000; n++) {
+    for (n = 0; n < 20000; n++) {
         for (i = 0; i < sizeof(struct gameState); i++) {
             ((char*)&G)[i] = floor(Random() * 256);
         }
@@ -167,21 +125,45 @@ int main()
         //printf("%d ", p);
         G.whoseTurn = p;
         pG.whoseTurn = p;
-        G.playedCardCount = floor(Random() * (MAX_DECK - 1));
+        G.playedCardCount = floor(Random() * (MAX_DECK - 1)) + 1;
         pG.playedCardCount = G.playedCardCount;
-        G.deckCount[p] = floor(Random() * MAX_DECK);
+
+        G.deckCount[p] = floor(Random() * (MAX_DECK - 1)) + 1;
         pG.deckCount[p] = G.deckCount[p];
+        deckCount = G.deckCount[p];
+
         G.discardCount[p] = floor(Random() * (MAX_DECK - 1))+1; // insure both discard and deck are never empty
         pG.discardCount[p] = G.discardCount[p];
+        discCount = pG.discardCount[p];
+
         G.handCount[p] = floor(Random() * (MAX_HAND - 1)) + 1; // insure handCount is never 1
         pG.handCount[p] = G.handCount[p];
-        //printf(" %d\n", pG.handCount[p]);
-        // Adventure depends on drawing cards from either the deck
-        // or the discard pile (transfered back into the deck
-        // So, here a method is called to populated both the deck and hand
-        // with random values
-        randomlyInitHand(p, &G, &pG);
-        randomlyInitDeckDiscard(p, &G, &pG);
+
+        addedToDeck = 0;
+        addedToDisc = 0;
+        randomCard = floor(Random()*2);
+        while(addedToDeck < deckCount)
+        {
+            // add to deck
+            G.deck[p][addedToDeck] = randomCard;
+            pG.deck[p][addedToDeck] = G.deck[p][addedToDeck];
+            // get another random card
+            addedToDeck++;
+            randomCard = 1;
+        }
+
+        printf("deckCount = %d\n", deckCount);
+        printf("discCount = %d\n", discCount);
+        // do the same for the players discard pile
+        while(addedToDisc < discCount)
+        {
+            G.discard[p][addedToDisc] = randomCard;
+            pG.discard[p][addedToDisc] = G.discard[p][addedToDisc];
+            randomCard = 1;
+            addedToDisc++;
+        }
+
+        randomlyInitHand(p, &pG, &G);
         checkAdv(p, &G, pG);
     }
 

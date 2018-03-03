@@ -13,7 +13,7 @@
 
 int inDeck(int player, struct gameState state, int card); // used in smithy test
 int inHandCount(int player, int handCount, struct gameState state, int card);
-int getTreasureyCardCount(int player, struct gameState state); // used in adventurer test
+int getTreasureyCardCount(int player, int handCount, struct gameState state); // used in adventurer test
 void emptyDeck(int player, struct gameState *state); // used in adventurer test
 void advC3(int player, struct gameState *state); // used to alter state adventurer for case 3
 void advC4(int player, struct gameState *state); // used to alter state of adventurer for case 4

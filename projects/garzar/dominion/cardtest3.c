@@ -27,7 +27,7 @@ int main () {
     {
         printf("villageEffect(): FAIL general test village in hand with empty deck\n");
     }
-    
+
     if(prevHand == G.handCount[player1])
     {
         printf("villageEffect(): PASS hand increased by 0\n");
@@ -36,7 +36,7 @@ int main () {
     {
         printf("villageEffect(): FAIL hand increased by 0\n");
     }
-    
+
     if(prevNumAct == G.numActions - 2)
     {
         printf("villageEffect(): PASS actions increased by 2\n");
@@ -45,7 +45,7 @@ int main () {
     {
         printf("villageEffect(): FAIL actions increased by 2\n");
     }
-    
+
     if(!inDeck(player1, G, 14))
     {
         printf("villageEffect(): PASS village properly discarded\n\n");
@@ -55,7 +55,7 @@ int main () {
         printf("villageEffect(): FAIL village properly discarded\n\n");
     }
 
-    
+
     G = myInitGame();
     if(cardEffect(14, -1, -1, -1, &G, 0, 0)== 0 )
     {
@@ -65,7 +65,7 @@ int main () {
     {
         printf("villageEffect(): FAIL general test village not in hand \n");
     }
-    
+
     if(prevHand == G.handCount[player1])
     {
         printf("villageEffect(): PASS hand increased by 0\n");
@@ -74,7 +74,7 @@ int main () {
     {
         printf("villageEffect(): FAIL hand increased by 0\n");
     }
-    
+
     if(prevNumAct == G.numActions - 2)
     {
         printf("villageEffect(): PASS actions increased by 2\n");
@@ -83,7 +83,7 @@ int main () {
     {
         printf("villageEffect(): FAIL actions increased by 2\n");
     }
-    
+
     if(!inDeck(player1, G, 14))
     {
         printf("villageEffect(): PASS village properly discarded\n\n");

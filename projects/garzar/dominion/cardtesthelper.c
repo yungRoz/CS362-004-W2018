@@ -93,13 +93,13 @@ int inHandCount(int player, int handCount, struct gameState state, int card)
 }
 
 
-int getTreasureyCardCount(int player, struct gameState state)
+int getTreasureyCardCount(int player, int handCount, struct gameState state)
 {
     int count = 0;
     int j;
     int card;
 
-    for(j = 0; j < state.handCount[player]; j ++)
+    for(j = 0; j < handCount; j ++)
     {
         card = state.hand[player][j]; // grab card from hand
         if(card == 4 || card == 5 || card == 6) // if copper, gold or silver

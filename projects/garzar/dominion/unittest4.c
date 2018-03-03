@@ -31,7 +31,7 @@ int main () {
     {
         printf("getCost(): FAIL when passed estate\n");
     }
-    
+
     // duchy cost = 5
     if(getCost(2) == 5)
     {
@@ -41,7 +41,7 @@ int main () {
     {
         printf("getCost(): FAIL when passed duchy\n");
     }
-    
+
     // province cost = 8
     if(getCost(3) == 8)
     {
@@ -51,8 +51,8 @@ int main () {
     {
         printf("getCost(): FAIL when passed province\n");
     }
-    
-    
+
+
     // copper cost = 0
     if(getCost(4) == 0)
     {
@@ -62,7 +62,7 @@ int main () {
     {
         printf("getCost(): FAIL when passed copper\n");
     }
-    
+
     // silver cost = 3
     if(getCost(5) == 3)
     {
@@ -72,7 +72,7 @@ int main () {
     {
         printf("getCost(): FAIL when passed silver\n");
     }
-    
+
     // gold cost = 6
     if(getCost(6) == 6)
     {
@@ -82,7 +82,7 @@ int main () {
     {
         printf("getCost(): FAIL when passed gold\n");
     }
-    
+
     // adventurer cost = 6
     if(getCost(7) == 6)
     {
@@ -92,7 +92,7 @@ int main () {
     {
         printf("getCost(): FAIL when passed adventurer\n");
     }
-    
+
     // council_room cost = 5
     if(getCost(8) == 5)
     {
@@ -102,7 +102,7 @@ int main () {
     {
         printf("getCost(): FAIL when passed council_room\n");
     }
-    
+
     // feast cost = 4
     if(getCost(9) == 4)
     {
@@ -112,7 +112,7 @@ int main () {
     {
         printf("getCost(): FAIL when passed feast\n");
     }
-    
+
     // gardens cost = 4
     if(getCost(10) == 4)
     {
@@ -122,7 +122,7 @@ int main () {
     {
         printf("getCost(): FAIL when passed gardens\n");
     }
-    
+
     // mine cost = 5
     if(getCost(11) == 5)
     {
@@ -132,7 +132,7 @@ int main () {
     {
         printf("getCost(): FAIL when passed mine\n");
     }
-    
+
     // remodel cost = 4
     if(getCost(12) == 4)
     {
@@ -142,7 +142,7 @@ int main () {
     {
         printf("getCost(): FAIL when passed remodel\n");
     }
-    
+
     // smithy cost = 4
     if(getCost(13) == 4)
     {
@@ -152,7 +152,7 @@ int main () {
     {
         printf("getCost(): FAIL when passed smithy\n");
     }
-    
+
     // village cost = 3
     if(getCost(14) == 3)
     {
@@ -162,7 +162,7 @@ int main () {
     {
         printf("getCost(): FAIL when passed village\n");
     }
-    
+
     // baron cost = 4
     if(getCost(15) == 4)
     {
@@ -172,7 +172,7 @@ int main () {
     {
         printf("getCost(): FAIL when passed baron\n");
     }
-    
+
     // great hall cost = 3
     if(getCost(16) == 3)
     {
@@ -182,7 +182,7 @@ int main () {
     {
         printf("getCost(): FAIL when passed great_hall\n");
     }
-    
+
     // minion cost = 5
     if(getCost(17) == 5)
     {
@@ -192,7 +192,7 @@ int main () {
     {
         printf("getCost(): FAIL when passed minion\n");
     }
-    
+
     // steward cost = 3
     if(getCost(18) == 3)
     {
@@ -202,7 +202,7 @@ int main () {
     {
         printf("getCost(): FAIL when passed steward\n");
     }
-    
+
     // tribute cost = 5
     if(getCost(19) == 5)
     {
@@ -212,7 +212,7 @@ int main () {
     {
         printf("getCost(): FAIL when passed tributen");
     }
-    
+
     // ambassador cost = 3
     if(getCost(20) == 3)
     {
@@ -222,7 +222,7 @@ int main () {
     {
         printf("getCost(): FAIL when passed ambassador\n");
     }
-    
+
     // cutpurse cost = 4
     if(getCost(21) == 4)
     {
@@ -232,7 +232,7 @@ int main () {
     {
         printf("getCost(): FAIL when passed cutpurse\n");
     }
-    
+
     // embargo cost = 2
     if(getCost(22) == 2)
     {
@@ -242,7 +242,7 @@ int main () {
     {
         printf("getCost(): FAIL when passed embargo\n");
     }
-    
+
     // outpost cost = 5
     if(getCost(23) == 5)
     {
@@ -252,7 +252,7 @@ int main () {
     {
         printf("getCost(): FAIL when passed outpost\n");
     }
-    
+
     // salvager cost = 4
     if(getCost(24) == 4)
     {
@@ -262,7 +262,7 @@ int main () {
     {
         printf("getCost(): FAIL when passed salvager\n");
     }
-    
+
     // sea hag cost = 4
     if(getCost(25) == 4)
     {
@@ -272,7 +272,7 @@ int main () {
     {
         printf("getCost(): FAIL when passed sea_hag\n");
     }
-    
+
     // treasure map cost = 4
     if(getCost(26) == 4)
     {

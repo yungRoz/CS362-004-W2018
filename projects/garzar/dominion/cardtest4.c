@@ -16,7 +16,7 @@ int main () {
     struct gameState G = myInitGame();
     int player1 = 0;
 
-    
+
     // put remodel in the deck
     G.hand[player1][5] = 12;
     G.handCount[player1]++;
@@ -41,7 +41,7 @@ int main () {
     {
         printf("remodelEffect(): FAIL traded card discarded\n");
     }
-    
+
     if(inDeck(player1, G, 17))
     {
         printf("remodelEffect(): PASS  traded up card in deck\n");
@@ -50,7 +50,7 @@ int main () {
     {
         printf("remodelEffect(): FAIL traded up card in deck\n");
     }
-    
+
     if(inDeck(player1, G, 12)==0)
     {
         printf("remodelEffect(): PASS remodel discarded\n\n");
@@ -59,7 +59,7 @@ int main () {
     {
         printf("remodelEffect(): FAIL remodel discarded\n\n");
     }
-    
+
 
     // gained card does not need to costexactly  more, it can cost much less
     G = myInitGame();
@@ -87,7 +87,7 @@ int main () {
     {
         printf("remodelEffect(): FAIL traded card discarded\n");
     }
-    
+
     if(inDeck(player1, G, 14))
     {
         printf("remodelEffect(): PASS  traded up card in deck\n");
@@ -96,7 +96,7 @@ int main () {
     {
         printf("remodelEffect(): FAIL traded up card in deck\n");
     }
-    
+
     if(inDeck(player1, G, 12)==0)
     {
         printf("remodelEffect(): PASS remodel discarded\n\n");
@@ -132,7 +132,7 @@ int main () {
     {
         printf("remodelEffect(): FAIL traded card discarded\n");
     }
-    
+
     if(inDeck(player1, G, 7))
     {
         printf("remodelEffect(): PASS  traded up card in deck\n");
@@ -141,7 +141,7 @@ int main () {
     {
         printf("remodelEffect(): FAIL traded up card in deck\n");
     }
-    
+
     if(inDeck(player1, G, 12)==0)
     {
         printf("remodelEffect(): PASS remodel discarded\n\n");
