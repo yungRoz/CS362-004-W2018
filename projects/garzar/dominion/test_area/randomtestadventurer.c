@@ -10,6 +10,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <assert.h>
+#include <math.h>
 #include "rngs.h"
 
 struct countFails
