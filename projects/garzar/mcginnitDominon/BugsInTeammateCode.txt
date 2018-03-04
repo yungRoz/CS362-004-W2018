@@ -1,0 +1,80 @@
+Unique ID: 1                                Date: 03/01/2018
+
+Location: “dominion.c” (onid: mcginnit)
+
+Title: smithyCard() function does not discard smithy after it is played
+
+Summary: 
+The smithyCard() function within the mcginnit fork of Dominion.c contains a bug whereby after smithy is played it is not discarded.  
+
+Summary of relevant code that produced bug:
+01    Game State is initialized
+The initialization involves starting a game with 1 player, player 0. The supplyCount of the game is set to 8 for curse, 20 for estate, 20 for duchy, 8 for province, 50 each for all treasure cards, 8 cards each for adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall, minion, steward, tribute, ambassador, cutpurse, and embargo. The deck for player 0 is filled with 3 estate cards, 7 copper, shuffled, and then the players hand is manually set with 5 cards from the deck. It is player 0’s turn 
+02    A smithy card is added to players hand at index 5
+03    The handCount for the player is incremented (it is now 6)
+04    The handCount and deckCount are saved in variables prevHandCount prevDeckCount
+05    The cardEffect() function which in turn calls smithyCard() is called
+06    The new handCount is compared to prevHandCount. 
+        If it is not the prevHandCount + 2, the card code is considered to have failed
+        (this is because +3 cards  and -1 smithy should give total +2)
+        It fails here.
+07    Function call to check if smithy is still in the deck
+	The function loops through the players hand counting the occurence of smithy card. It should return 0 after the smithyCard() function is called. 
+	If the function does not return 0, smithy is still in the deck and the card code is considered to have failed.
+	It fails here.     
+    
+Instructions for reproduction: 
+Make the function call to cardEffect() for the current player. Current player’s hand must contain 1 smithy card. Deck discard must contain at least 3 cards, so that card’s can be drawn. 
+
+Link to code for reproduction: 
+https://github.com/yungRoz/CS362-004-W2018/blob/master/projects/garzar/dominion/cardtest1.c
+
+System where bug was uncovered:   64-bit Ubuntu 16.04, compiler: gcc, options: -Wall -fpic -lm -std=c99
+
+Description of severity: 
+Worst case scenario: this bug has the ability to drastically affect the outcome of the game. A user with knowledge of this bug could exploit this flaw to cheat by buying 1 smithy and constantly playing it to empty their deck and end the game. Perhaps if this game was being deployed along with some betting/financial system, the severity of risk with this bug would be very high.
+
+Estimated priority: 
+As hinted out in the section discussing severity, the priority of this bug may depend on the area where the game is being deployed. If the stakes are high for the proper deployment of this code base, such as for a financial organization, this bug should have a high priority to be fixed as soon as possible to insure integrity of the system for users/customers. 
+
+
+
+
+Unique ID: 2                                Date: 03/01/2018
+
+Location: “dominion.c” (onid: mcginnit)
+
+Title: remodelCard() function is not properly trading card for another
+
+Summary: 
+The remodelCard() function within the mcginnit fork of Dominion.c contains a bug whereby after remodel is played. The players chosen card to trade out is not discarded. Furthermore, the players chosen card to trade for is not gained .  
+
+Summary of relevant code that produced bug:
+01    Game State is manually initialized
+The initialization involves starting a game with 1 player, player 0. The supplyCount of the game is set to 8 for curse, 20 for estate, 20 for duchy, 8 for province, 50 each for all treasure cards, 8 cards each for adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall, minion, steward, tribute, ambassador, cutpurse, and embargo. The deck for player 0 is filled with 3 estate cards, 7 copper, shuffled, and then the players hand is manually set with 5 cards from the deck. It is player 0’s turn 
+02    Remodel is added to the deck at index 5
+03    Village is added to the deck at index 6
+04    cardEffect() is called where the player is trading out village for minion 
+05    Function call to check if village is still in the deck
+The function loops through the players hand counting the occurence of village card. It should return 0 after the remodelCard() function has been called. 
+If the function does not return 0, village is still in the deck and the card code is considered to have failed.
+It fails here.     
+06    Function call to check if minion is in the deck 
+The function loops through the players hand counting the occurence of minion card. It should return 1 after the remodelCard() function has been called. 
+If the function does not return 1, minion is not in the deck and the card code is considered to have failed.
+It fails here. 
+
+Instructions for reproduction: 
+Make the function call to cardEffect() for the current player. Current player’s hand must contain 1 remodel card and 1 of the card to be traded out. 
+
+Link to code for reproduction: 
+https://github.com/yungRoz/CS362-004-W2018/blob/master/projects/garzar/dominion/cardtest4.c
+
+System where bug was uncovered:   64-bit Ubuntu 16.04, compiler: gcc, options: -Wall -fpic -lm -std=c99
+
+Description of severity: 
+Worst case scenario: this bug has the ability to drastically affect the outcome of the game. A user without knowledge of this bug could unknowingly waste turns attempting to trade out cards, and never receiving the card they traded up for. Perhaps if this game was being deployed along with some betting/financial system, the severity of risk with this bug would be very high. Additionally, if the user has immediate knowledge through the ui that the card is not performing as it should be, this could significantly undermine the users trust in the application systems integrity. 
+
+Estimated priority: 
+As hinted out in the section discussing severity, the priority of this bug may depend on the area where the game is being deployed. If the stakes are high for the proper deployment of this code base, such as for a financial organization, this bug should have a high priority to be fixed as soon as possible to insure integrity of the system for users/customers. 
+

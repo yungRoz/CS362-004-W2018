@@ -70,14 +70,13 @@ void randomlyInitDeckDiscard(int player, struct gameState* G, struct gameState* 
 
 void checkAdv(int p, struct gameState* G, struct gameState pG)
 {
-    printf("Start\n");
     int returnVal, oldTCC, newTCC;
 
     oldTCC = getTreasureyCardCount(p, pG.handCount[p], pG);
-
-    printf("Here\n");
+    G->hand[p][0] = 7;
+    printf("Starting call to cardEffect!\n", oldTCC);
     returnVal = cardEffect(7, -1, -1, -1, G, -1, 0);
-    printf(" After \n");
+    printf("Finished \n");
     // if error, increment return fail
     if(returnVal == -1)
     {
@@ -164,6 +163,7 @@ int main()
             addedToDisc++;
         }
 
+        randomlyInitHand(p, &pG, &G);
         checkAdv(p, &G, pG);
     }
 
